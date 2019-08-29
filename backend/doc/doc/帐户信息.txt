@@ -1,0 +1,67 @@
+账户：xyzhongyiyuan@163.com
+密码：Xyzyy7822295
+
+xyzyy.app-hos.com 59.110.231.9
+xyzyy-validate.app-hos.com 59.110.231.9
+AppID:wxf53fd9841dda6d89
+AppSecret:9ddd1ced64114f985fe070ed19fb3910
+原来的自定义菜单
+   医院情况   
+      医院简介
+      科室介绍 骨伤科 针灸理疗康复中心 门诊部 肛肠科 糖尿病专科 外科 内科 急诊科 
+     先进设备 德国西门子16层螺旋CT 日本东芝DR机 日本奥林巴斯胃镜 德国西门子(SIEMENS)四维彩色超声诊断仪
+  医务咨询
+  医疗服务 
+      先治病 后交钱  腔镜治疗中心
+       
+
+地理位置
+  谷歌地图 40.2841812366,123.2865881178
+  百度地图 40.2899201769,123.2931746010
+  腾讯高德 40.2842000000,123.2866100000
+  图吧地图 40.2831711600,123.2720347500
+  谷歌地球 40.2827611600,123.2809447500
+  北纬40.16.57.94 东经123.16.51.40
+
+NAT 虚拟服务器 
+    模式单一
+    服务名称oracle
+协议tcp
+wan ip 所有
+公网端口 20521
+私网ip 172.18.100.200
+
+DMZ 172.18.100.202 上面安装花生壳3.0
+GATEWAY=172.18.100.254
+DNS1=8.8.8.8
+DEFROUTE=yes
+
+
+医院防火墙vigor2950 172.18.100.254 admin/passwd
+
+公司190虚拟服务器花生壳|  SN: ORAYc0a49c40f098   Default password: admin  |   生成域名205a9660t2.iask.in
+SN: ORAYe82c402418c8  passwd   动态域名 f20599b098.iok.la
+
+微信公众号 功能设置-网页授权域名xyzyy-validate.app-hos.com
+微信公众号 功能设置-业务域名 未设置
+微信公众号 功能设置-JS接口安全域名 未设置
+
+开发-基本配置 启用服务器 
+   服务器地址 http://xyzyy-validate.app-hos.com/validate
+   令牌(Token)  eastwill
+   消息加解密密钥(EncodingAESKey) :o1NfQJbuChken6NrY1EDA55cRCB74hxA7ngLE1MPLOc
+   消息加解密方式  明文模式
+
+   API密钥 EASTWILLpasswd58EASTWILLpasswd58
+   操作密码EASTWILLpass58@
+商户号 1501800341 
+商户名称 岫岩满族自治县中医院 
+商家简称 岫岩县中医院 
+
+支付配置 
+   公众号支付 JSAPI支付授权目录 http://xyzyy.app-hos.com/
+       http://xyzyy.app-hos.com/regorder/
+   扫码支付 扫码回调链接  http://xyzyy.app-hos.com/barcodeback/ 
+
+
+
