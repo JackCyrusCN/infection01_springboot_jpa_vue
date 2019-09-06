@@ -490,6 +490,11 @@ export const constantRouterMap = [
         path: 'home',
         name: 'TestHome',
         component: () => import('@/views/Home')
+      },
+      {
+        path: 'webSocket',
+        name: 'tWebSocket',
+        component: () => import('@/views/test/TWebSocket')
       }
     ]
   },

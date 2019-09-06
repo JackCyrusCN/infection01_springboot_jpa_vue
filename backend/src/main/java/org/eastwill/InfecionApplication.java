@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableConfigurationProperties(SystemProperties.class)
-public class WxsrvApplication {
+public class InfecionApplication {
 	//@Autowired
 	//private DataSource primaryDataSource;
 	//@Bean
@@ -23,7 +23,7 @@ public class WxsrvApplication {
 	//}
 	
 	public static void main(String[] args) {
-		SpringApplication.run(WxsrvApplication.class, args);
+		SpringApplication.run(InfecionApplication.class, args);
 	}
 
 
