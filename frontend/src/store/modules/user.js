@@ -39,10 +39,7 @@ const user = {
         login(userInfo).then(response => {
           const result = response.result
           Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
-          console.log('Vue.ls.get(ACCESS_TOKEN)==>' + Vue.ls.get(ACCESS_TOKEN))
-          console.log('login()==>' + JSON.stringify(response))
           commit('SET_TOKEN', result.token)
-          console.log('token()==>' + JSON.stringify(result.token))
           resolve('successTest')
         }).catch(error => {
           reject(error)
@@ -55,17 +52,16 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
           const result = response.result
-          console.log('getInfo()==>' + JSON.stringify(response))
-          if (result.role && result.role.permissionList.length > 0) {
-            // const role = result.role
-            // role.permissions = result.role.permissions
-            // role.permissions.map(per => {
-            //   if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
-            //     const action = per.actionEntitySet.map(action => { return action.action })
-            //     per.actionList = action
-            //   }
-            // })
-            // role.permissionList = role.permissions.map(permission => { return permission.permissionId })
+          if (result.role && result.role.permissions.length > 0) {
+            const role = result.role
+            role.permissions = result.role.permissions
+            role.permissions.map(per => {
+              if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
+                const action = per.actionEntitySet.map(action => { return action.action })
+                per.actionList = action
+              }
+            })
+            role.permissionList = role.permissions.map(permission => { return permission.permissionId })
             commit('SET_ROLES', result.role)
             commit('SET_INFO', result)
           } else {
@@ -82,7 +78,7 @@ const user = {
       })
     },
 
-    // 登出
+    // 登 出
     Logout ({ commit, state }) {
       return new Promise((resolve) => {
         commit('SET_TOKEN', '')

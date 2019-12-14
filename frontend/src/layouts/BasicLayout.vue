@@ -28,10 +28,7 @@
       :collapsible="true"
     ></side-menu>
 
-    <a-layout
-      :class="[layoutMode, `content-width-${contentWidth}`]"
-      :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }"
-    >
+    <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
       <!-- layout header -->
       <global-header
         :mode="layoutMode"
@@ -43,9 +40,7 @@
       />
 
       <!-- layout content -->
-      <a-layout-content
-        :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }"
-      >
+      <a-layout-content :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
         <multi-tab v-if="multiTab"></multi-tab>
         <transition name="page-transition">
           <route-view />
@@ -61,6 +56,7 @@
       <setting-drawer v-if="!production"></setting-drawer>
     </a-layout>
   </a-layout>
+
 </template>
 
 <script>
@@ -91,9 +87,7 @@ export default {
     return {
       production: config.production,
       collapsed: false,
-      menus: [],
-      ws: null,
-      sendText: ''
+      menus: []
     }
   },
   computed: {
@@ -130,7 +124,6 @@ export default {
         }, 16)
       })
     }
-    this.websocket()
   },
   methods: {
     ...mapActions(['setSidebar']),
@@ -155,23 +148,6 @@ export default {
     },
     drawerClose () {
       this.collapsed = false
-    },
-    websocket () {
-      this.ws = new WebSocket('ws://localhost:9527/websocket')
-      this.ws.onopen = () => {
-        // Web Socket 已连接上，使用 send() 方法发送数据
-        console.log('数据发送中...')
-        this.ws.send('123123')
-        console.log('数据发送完成1')
-      }
-      this.ws.onmessage = evt => {
-        console.log('evt==>' + evt.data)
-        console.log('数据已接收...')
-      }
-      this.ws.onclose = function () {
-        // 关闭 websocket
-        console.log('连接已关闭...')
-      }
     }
   }
 }

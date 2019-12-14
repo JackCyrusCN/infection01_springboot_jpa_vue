@@ -24,14 +24,30 @@
         <a-form-item v-bind="formItemLayout" label="感染诊断">
           <a-select
             defaultValue="下呼吸道感染"
-            style="width: 120px"
+            style="width: 240px"
             v-model="caseReport.infectionDiagCode"
           >
             <a-select-option value="in1">上呼吸道感染</a-select-option>
             <a-select-option value="in2">下呼吸道感染</a-select-option>
-            <a-select-option value="in3" disabled>胸膜腔感染</a-select-option>
-            <a-select-option value="in4">感染性腹泻</a-select-option>
-            <a-select-option value="in5">胃肠道感染</a-select-option>
+            <a-select-option value="in3">胸膜腔感染</a-select-option>
+            <a-select-option value="in4">血管相关性感染</a-select-option>
+            <a-select-option value="in5">败血症</a-select-option>
+            <a-select-option value="in6">输血相关感染</a-select-option>
+            <a-select-option value="in7">侵犯心脏瓣膜的心内膜炎</a-select-option>
+            <a-select-option value="in8">心肌炎或心包炎</a-select-option>
+            <a-select-option value="in9">感染性腹泻</a-select-option>
+            <a-select-option value="in10">胃肠道感染</a-select-option>
+            <a-select-option value="in11">抗菌药物相关性腹泻</a-select-option>
+            <a-select-option value="in12">病毒性肝炎</a-select-option>
+            <a-select-option value="in13">腹(盆)腔内组织感染</a-select-option>
+            <a-select-option value="in14">腹水感染</a-select-option>
+            <a-select-option value="in15">皮肤感染</a-select-option>
+            <a-select-option value="in16">软组织感染</a-select-option>
+            <a-select-option value="in17">褥疮感染</a-select-option>
+            <a-select-option value="in18">烧伤感染</a-select-option>
+            <a-select-option value="in19">乳腺脓肿或乳腺炎</a-select-option>
+            <a-select-option value="in20">脐炎</a-select-option>
+            <a-select-option value="in21">婴儿脓疱病</a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item v-bind="formItemLayout" label="病原学检查">

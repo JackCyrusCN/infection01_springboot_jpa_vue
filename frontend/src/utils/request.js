@@ -7,7 +7,7 @@ import { ACCESS_TOKEN } from '@/store/mutation-types'
 
 // 创建 axios 实例
 const service = axios.create({
-  baseURL: 'http://localhost:9527/', // process.env.VUE_APP_API_BASE_URL, // api base_url
+  baseURL: process.env.VUE_APP_API_BASE_URL, // api base_url
   timeout: 6000 // 请求超时时间
 })
 
@@ -42,13 +42,10 @@ const err = (error) => {
 service.interceptors.request.use(config => {
   const token = Vue.ls.get(ACCESS_TOKEN)
   if (token) {
-    //config.headers['Access-Token'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
-    config.headers.Authentication = token
+    config.headers['Access-Token'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
   }
   return config
-}, err => {
-  return Promise.reject(err)
-})
+}, err)
 
 // response interceptor
 service.interceptors.response.use((response) => {

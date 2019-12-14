@@ -13,13 +13,7 @@
         @change="handleTabClick"
       >
         <a-tab-pane key="tab1" tab="账号密码登录">
-          <a-alert
-            v-if="isLoginError"
-            type="error"
-            showIcon
-            style="margin-bottom: 24px;"
-            message="账户或密码错误（admin/ant.design )"
-          />
+          <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" message="账户或密码错误（admin/ant.design )" />
           <a-form-item>
             <a-input
               size="large"
@@ -30,7 +24,7 @@
                 {rules: [{ required: true, message: '请输入帐户名或邮箱地址' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
               ]"
             >
-              <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }" />
+              <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
           </a-form-item>
 
@@ -45,32 +39,22 @@
                 {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
               ]"
             >
-              <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }" />
+              <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
           </a-form-item>
         </a-tab-pane>
         <a-tab-pane key="tab2" tab="手机号登录">
           <a-form-item>
-            <a-input
-              size="large"
-              type="text"
-              placeholder="手机号"
-              v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]"
-            >
-              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }" />
+            <a-input size="large" type="text" placeholder="手机号" v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">
+              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
           </a-form-item>
 
           <a-row :gutter="16">
             <a-col class="gutter-row" :span="16">
               <a-form-item>
-                <a-input
-                  size="large"
-                  type="text"
-                  placeholder="验证码"
-                  v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]"
-                >
-                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }" />
+                <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
+                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
                 </a-input>
               </a-form-item>
             </a-col>
@@ -132,7 +116,7 @@
 </template>
 
 <script>
-// import md5 from 'md5'
+import md5 from 'md5'
 import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
 import { mapActions } from 'vuex'
 import { timeFix } from '@/utils/util'
@@ -162,7 +146,7 @@ export default {
     }
   },
   created () {
-    get2step({})
+    get2step({ })
       .then(res => {
         this.requiredTwoStepCaptcha = res.result.stepCode
       })
@@ -207,10 +191,9 @@ export default {
           const loginParams = { ...values }
           delete loginParams.username
           loginParams[!state.loginType ? 'email' : 'username'] = values.username
-          loginParams.password = values.password // md5(values.password)
+          loginParams.password = md5(values.password)
           Login(loginParams)
             .then((res) => {
-              console.log('cres==>' + JSON.stringify(res))
               this.loginSuccess(res)
             })
             .catch(err => this.requestFailed(err))
@@ -268,8 +251,7 @@ export default {
       })
     },
     loginSuccess (res) {
-      console.log(res)
-      this.$router.push({ name: '/dashboard' })
+      this.$router.push({ name: 'general' })
       this.isLoginError = false
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {

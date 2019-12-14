@@ -162,6 +162,10 @@ const info = (options) => {
         'action': 'update',
         'describe': '修改',
         'defaultCheck': false
+      }, {
+        'action': 'delete',
+        'describe': '删除',
+        'defaultCheck': false
       }],
       'actionList': null,
       'dataAccess': null
@@ -370,4 +374,4 @@ const info = (options) => {
   return builder(userInfo)
 }
 
-//  Mock.mock(/\/user\/info/, 'get', info)
+Mock.mock(/\/api\/user\/info/, 'get', info)

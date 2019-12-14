@@ -19,18 +19,14 @@ function plugin (Vue) {
     $auth: {
       get () {
         const _this = this
-        return (action) => {
-          const actionList = _this.$store.getters.roles.actionList
-          return actionList.findIndex( val => {
+        return (permissions) => {
+          const [permission, action] = permissions.split('.')
+          const permissionList = _this.$store.getters.roles.permissions
+          return permissionList.find((val) => {
+            return val.permissionId === permission
+          }).actionList.findIndex((val) => {
             return val === action
           }) > -1
-          // const [permission, action] = permissions.split('.')
-          // const permissionList = _this.$store.getters.roles.permissions
-          // return permissionList.find((val) => {
-          //   return val.permissionId === permission
-          // }).actionList.findIndex((val) => {
-          //   return val === action
-          // }) > -1
         }
       }
     }
